@@ -1,12 +1,6 @@
-Below is the README file in plain text with code blocks for the SQL code sections. You can save this content as a README file (for example, README.txt) in your repository.
-
---------------------------------------------------
-SQL Retail Sales Analysis - P1
-
 Project Overview
 ----------------
-Project Title: Retail Sales Analysis  
-Level: Beginner  
+Project Title: Retail Sales Analysis   
 Database: sql_project
 
 This project demonstrates the essential SQL skills used by data analysts to explore, clean, and analyze retail sales data. The project involves setting up a retail sales database, cleaning and exploring the data, and answering specific business questions through SQL queries. It serves as a solid foundation for those starting their journey in data analysis using SQL.
