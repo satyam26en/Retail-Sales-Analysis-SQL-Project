@@ -3,8 +3,7 @@ Project Overview
 Project Title: Retail Sales Analysis   
 Database: sql_project
 
-This project demonstrates the essential SQL skills used by data analysts to explore, clean, and analyze retail sales data. The project involves setting up a retail sales database, cleaning and exploring the data, and answering specific business questions through SQL queries. It serves as a solid foundation for those starting their journey in data analysis using SQL.
-
+This project demonstrates the essential SQL skills used by data analysts to explore, clean, and analyze retail sales data. The project involves setting up a retail sales database, cleaning and exploring the data, and answering specific business questions through SQL queries. 
 Objectives
 1. Database Setup: Create and populate a retail sales database with provided sales data.
 2. Data Cleaning: Identify and remove records with missing or null values.
