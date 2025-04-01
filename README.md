@@ -1,26 +1,23 @@
 Project Overview
-----------------
+
 Project Title: Retail Sales Analysis   
 Database: sql_project
 
 This project demonstrates the essential SQL skills used by data analysts to explore, clean, and analyze retail sales data. The project involves setting up a retail sales database, cleaning and exploring the data, and answering specific business questions through SQL queries. It serves as a solid foundation for those starting their journey in data analysis using SQL.
 
 Objectives
-----------
 1. Database Setup: Create and populate a retail sales database with provided sales data.
 2. Data Cleaning: Identify and remove records with missing or null values.
 3. Exploratory Data Analysis (EDA): Perform various analyses to understand the dataset.
 4. Business Analysis: Use SQL queries to answer targeted business questions and extract actionable insights.
 
 Project Structure
------------------
 
 1. Database Setup
-   ----------------
+  
    The project begins with the creation of a database named "sql_project" and a table called "project_1" to store sales data. The table includes columns for transaction details, sale date and time, customer information, and sales figures.
 
    SQL Code:
-   --------------------------------------------------
    ```
    -- SQL Retail Sales Analysis - P1
    CREATE DATABASE sql_project;
@@ -42,14 +39,13 @@ Project Structure
        total_sale FLOAT
    );
    ```
-   --------------------------------------------------
+   
 
 2. Data Exploration & Cleaning
    -----------------------------
    This section includes queries to preview the data, count records, and clean the dataset by removing any rows with missing values.
 
    SQL Code:
-   --------------------------------------------------
    ```
    -- Preview Data
    SELECT * FROM project_1
@@ -86,7 +82,7 @@ Project Structure
         cogs IS NULL OR 
         total_sale IS NULL;
    ```
-   --------------------------------------------------
+  
 
 3. Data Analysis & Business Insights
    -----------------------------------
@@ -94,17 +90,17 @@ Project Structure
 
    1. Retrieve All Sales on a Specific Date  
       Retrieve all columns for sales made on '2022-11-05'.
-      --------------------------------------------------
+      
       ```
       SELECT *
       FROM project_1
       WHERE sale_date = '2022-11-05';
       ```
-      --------------------------------------------------
+    
 
    2. Transactions for 'Clothing' Category in November 2022  
       Retrieve transactions for the 'Clothing' category where quantity is at least 3.
-      --------------------------------------------------
+     
       ```
       SELECT * 
       FROM project_1
@@ -112,32 +108,32 @@ Project Structure
         AND quantiy >= 3
         AND DATE_FORMAT(sale_date, '%Y-%m') = '2022-11';
       ```
-      --------------------------------------------------
+      
 
    3. Average Age for 'Beauty' Category Customers  
       Calculate the average age of customers who purchased items from the 'Beauty' category.
-      --------------------------------------------------
+     
       ```
       SELECT 
           ROUND(AVG(age), 2) AS average_age
       FROM project_1
       WHERE category = 'Beauty';
       ```
-      --------------------------------------------------
+      
 
    4. High-Value Transactions  
       Retrieve all transactions where the total sale exceeds 1000.
-      --------------------------------------------------
+     
       ```
       SELECT *
       FROM project_1
       WHERE total_sale > 1000;
       ```
-      --------------------------------------------------
+      
 
    5. Transactions by Gender & Category  
       Count the number of transactions by each gender within each product category.
-      --------------------------------------------------
+      
       ```
       SELECT 
           gender,
@@ -147,11 +143,10 @@ Project Structure
       GROUP BY gender, category
       ORDER BY gender;
       ```
-      --------------------------------------------------
-
+     
    6. Best Selling Month per Year  
       Calculate the average sale per month and determine the best selling month for each year.
-      --------------------------------------------------
+     
       ```
       SELECT 
           year,
@@ -168,11 +163,11 @@ Project Structure
       ) AS t1
       WHERE month_rank = 1;
       ```
-      --------------------------------------------------
+      
 
    7. Top 5 Customers by Total Sales  
       Identify the top 5 customers based on their total sales.
-      --------------------------------------------------
+   
       ```
       SELECT 
           DISTINCT(customer_id),
@@ -182,11 +177,11 @@ Project Structure
       ORDER BY total_sales DESC
       LIMIT 5;
       ```
-      --------------------------------------------------
+      
 
    8. Unique Customers per Category  
       Find the number of unique customers for each product category.
-      --------------------------------------------------
+      
       ```
       SELECT 
           category,
@@ -194,11 +189,11 @@ Project Structure
       FROM project_1
       GROUP BY category;
       ```
-      --------------------------------------------------
+      
 
    9. Shifts & Order Counts  
       Analyze the number of orders during different shifts (Morning, Afternoon, Evening) based on sale time.
-      --------------------------------------------------
+      
       ```
       WITH hourly_sale AS (
           SELECT *,
@@ -215,11 +210,10 @@ Project Structure
       FROM hourly_sale
       GROUP BY shift;
       ```
-      --------------------------------------------------
-
+      
    10. Customer Segmentation Analysis  
        Categorize customers based on their total sale value.
-       --------------------------------------------------
+      
        ```
        SELECT 
            CASE 
@@ -231,11 +225,10 @@ Project Structure
        FROM project_1
        GROUP BY customer_segment;
        ```
-       --------------------------------------------------
-
+       
    11. Combined Sales Performance by Category  
        Analyze overall sales performance by category including total sales, average sale, and unique customers.
-       --------------------------------------------------
+       
        ```
        SELECT 
            category,
@@ -247,11 +240,11 @@ Project Structure
        GROUP BY category
        ORDER BY total_sales DESC;
        ```
-       --------------------------------------------------
+       
 
    12. Top Performing Categories Per Month  
        Identify top categories based on monthly total sales.
-       --------------------------------------------------
+       
        ```
        SELECT 
            DATE_FORMAT(sale_date, '%Y-%m') AS month,
@@ -261,11 +254,11 @@ Project Structure
        GROUP BY month, category
        ORDER BY month, total_sales DESC;
        ```
-       --------------------------------------------------
+       
 
    13. Customer Age Group Analysis  
        Analyze customer distribution and sales by defined age groups.
-       --------------------------------------------------
+      
        ```
        SELECT 
            CASE 
@@ -281,11 +274,10 @@ Project Structure
        GROUP BY age_group
        ORDER BY total_sales DESC;
        ```
-       --------------------------------------------------
-
+       
    14. Month-over-Month Sales Growth Rate  
        Calculate the sales growth rate from one month to the next.
-       --------------------------------------------------
+       
        ```
        WITH monthly_sales AS (
            SELECT 
@@ -301,11 +293,11 @@ Project Structure
            ROUND(((total_sales - LAG(total_sale, 1) OVER (ORDER BY month)) / LAG(total_sale, 1) OVER (ORDER BY month)) * 100, 2) AS growth_rate
        FROM monthly_sales;
        ```
-       --------------------------------------------------
+       
 
    15. Returning vs. New Customers Analysis  
        Analyze customer behavior by comparing first-time and returning customers.
-       --------------------------------------------------
+       
        ```
        WITH first_purchase AS (
            SELECT 
@@ -326,11 +318,10 @@ Project Structure
            ON p.customer_id = f.customer_id
        GROUP BY customer_type;
        ```
-       --------------------------------------------------
-
+       
    16. Sales Performance by Gender & Category  
        Summarize sales and transaction counts by gender within each category.
-       --------------------------------------------------
+       
        ```
        SELECT 
            gender,
@@ -341,7 +332,7 @@ Project Structure
        GROUP BY gender, category
        ORDER BY total_sales DESC;
        ```
-       --------------------------------------------------
+       
 
 Findings
 --------
